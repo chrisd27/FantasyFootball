@@ -1,0 +1,15 @@
+mixin summaryTable(object)
+  .summaryTable
+  each obj in object
+    .tblHeaders.row
+      p.inline.col-xs-4= obj.headers.col1
+      p.inline.col-xs-2= obj.headers.col2
+      p.inline.col-xs-2= obj.headers.col3
+      p.inline.col-xs-2= obj.headers.col4
+    each val in obj.values
+      .tblValues.row
+        p.inline.col-xs-4= val.col1
+        p.inline.col-xs-2= val.col2
+        p.inline.col-xs-2= val.col3
+        p.inline.col-xs-2= val.col4
+        a.col-xs-2(href='/edit/#{val.id}') Edit

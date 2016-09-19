@@ -1,0 +1,26 @@
+extends layout
+include _includes/sharedHTMLfunctions
+
+block content
+  #banner.page-header
+    .row
+      h1= title
+       small &nbsp; A summary of #{teamName}'s fantasy points!
+  .row-fluid
+    .col-xs-12.col-sm-6.inline
+      p Fantasy Points Table
+    .col-xs-12.col-sm-6.inline
+      p Fantasy Goals Table
+    .col-xs-12.col-sm-6.inline
+      p Fantasy Assists Table
+  .row-fluid
+    .col-xs-12.col-xs-6
+      h3 A list of #{teamName}'s players
+      +summaryTable(players)
+    .col-xs-12.col-xs-6
+      h3 A list of #{teamName}'s games
+      +summaryTable(games)
+    .col-xs-12.col-xs-6
+      h3 A list of #{teamName}'s rules
+      .summaryTable
+       
