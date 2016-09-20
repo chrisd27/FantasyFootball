@@ -15,10 +15,22 @@ router.get('/signIn', ctrlOthers.signIn);
 router.get('/about', ctrlOthers.about);
 
 /* Admin */
-router.get('/admin', ctrlAdmin.admin);
+router.get('/admin/teamSummary', ctrlAdmin.teamSummary);
+
+/* Add */
 router.get('/admin/addRules', ctrlAdmin.addRules);
 router.get('/admin/addPlayer', ctrlAdmin.addPlayer);
 router.get('/admin/addGame', ctrlAdmin.addGame);
+
+/* Edit */
+router.get('/admin/editRule', ctrlAdmin.editRule);
+router.get('/admin/editPlayer', ctrlAdmin.editPlayer);
+router.get('/admin/editGame', ctrlAdmin.editGame);
+
+/* Edit */
+router.get('/admin/viewRules', ctrlAdmin.viewRules);
+router.get('/admin/viewPlayer', ctrlAdmin.viewPlayer);
+router.get('/admin/viewGame', ctrlAdmin.viewGame);
 
 
 module.exports = router;

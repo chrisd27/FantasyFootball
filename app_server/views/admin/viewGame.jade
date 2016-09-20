@@ -1,0 +1,23 @@
+extends ../layout
+include ../_includes/sharedHTMLfunctions
+
+block content
+  .row
+    .col-xs-12.col-md-6
+      p#opposition-name-view Opposition
+      p#opposition-name-val= game.oppositionName
+  .row
+    .col-xs-12.col-md-6
+      p#date-view Game date
+      p#date-val= game.date
+  .row
+    .col-xs-12.col-md-6
+      p#score-view Game score
+      p#score-val= game.score
+  .row
+    .col-xs-12.col-md-6
+      p#match-report-view Match report
+      p#match-report-val= game.matchReport
+  .row
+    .col-xs-12
+    +playerStatsTable(player)

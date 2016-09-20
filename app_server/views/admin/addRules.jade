@@ -1,0 +1,38 @@
+extends ../layout
+include ../_includes/sharedHTMLfunctions
+
+block content
+  form(name="addRules", method="post")
+    .form-group.row
+      label(for="rule-name").col-xs-12.col-md-3 Rule name
+      .col-xs-12.col-md-6
+        input(type="text").form-control#rule-name
+    .form-group.row
+      label(for="position-multiplier").col-xs-12.col-md-3 Position multiplier
+      .col-xs-12.col-md-6
+        input(type="checkbox").form-control#position-multiplier
+    #single-points
+      .form-group.row
+        label(for="single-points").col-xs-12.col-md-3 Points
+        .col-xs-12.col-md-2
+          input(type="number").form-control#single-points
+    #multiplier-points
+      .form-group.row
+        label(for="goalkeeper-points").col-xs-12.col-md-3 Goalkeeper points
+        .col-xs-12.col-md-2
+          input(type="number").form-control#goalkeeper-points
+      .form-group.row
+        label(for="defender-points").col-xs-12.col-md-3 Defender points
+        .col-xs-12.col-md-2
+          input(type="number").form-control#defender-points
+      .form-group.row
+        label(for="midfielder-points").col-xs-12.col-md-3 Midfielder points
+        .col-xs-12.col-md-2
+          input(type="number").form-control#midfielder-points
+      .form-group.row
+        label(for="striker-points").col-xs-12.col-md-3 Striker points
+        .col-xs-12.col-md-2
+          input(type="number").form-control#striker-points
+      .form-group.row
+        .col-xs-12.col-md-2
+          input(type="submit").form-control#submit-new-rule

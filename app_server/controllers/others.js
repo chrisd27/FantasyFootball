@@ -1,6 +1,6 @@
 /* New Account */
 module.exports.newAccount = function(req, res){
-  res.render('index', { title: 'New Account' });
+  res.render('other/newAccount', { title: 'New Account' });
  };
 
 /* About */

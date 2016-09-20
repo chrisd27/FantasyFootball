@@ -1,0 +1,24 @@
+extends ../layout
+include ../_includes/sharedHTMLfunctions
+
+block content
+  form(name="addGame", method="post")
+    .form-group.row
+      label(for="opposition-name").col-xs-12.col-md-3 Opposition name
+      .col-xs-12.col-md-6
+        input(type="text", value="#{game.oppositionName}").form-control#opposition-name
+    .form-group.row
+      label(for="date").col-xs-12.col-md-3 Date
+      .col-xs-12.col-md-6
+        input(type="text", value="#{game.date}").form-control#date
+    .form-group.row
+      label(for="score").col-xs-12.col-md-3 Score
+      .col-xs-12.col-md-6
+        input(type="text", value="#{game.score}").form-control#score
+    .form-group.row
+      label(for="match-report").col-xs-12.col-md-3 Match report
+      .col-xs-12.col-md-6
+        input(type="textarea", value="#{game.matchReport}").form-control#match-report
+    .form-group.row
+      .col-xs-12.col-md-6
+        input(type="submit").form-control#submit-match

@@ -1,0 +1,30 @@
+extends ../layout
+include ../_includes/sharedHTMLfunctions
+
+block content
+  #banner.page-header
+    .row
+      h1= title
+       small &nbsp; A summary of #{teamName}'s fantasy points!
+  .row-fluid
+    .col-xs-12.col-sm-6.col-md-4.inline
+      p Fantasy Points Table
+      +summaryTable2Col(players, ['Player name', 'Fantasy points'], 'fantasy')
+    .col-xs-12.col-sm-6.col-md-4.inline
+      p Fantasy Goals Table
+      +summaryTable2Col(players, ['Player name', 'Goals'], 'goals')
+    .col-xs-12.col-sm-6.col-md-4.inline
+      p Fantasy Assists Table
+      +summaryTable2Col(players, ['Player name', 'Assists'], 'assists')
+  .row-fluid
+    .col-xs-12
+      h3 A list of #{teamName}'s players
+      +summaryTable4Col(players, ['Player name', 'Fantasy points', 'Goals', 'Assists'], 'Player')
+    .col-xs-12
+      h3 A list of #{teamName}'s games
+      +summaryTable4Col(games, ['Opposition', 'Score', 'Date', 'MOTM'], 'Game')
+    .col-xs-12
+      h3 A list of #{teamName}'s rules
+      .summaryTable
+      +summaryTable4Col(rules, ['Rule', 'Points', 'Position', 'Custom'], 'Rule')
+       

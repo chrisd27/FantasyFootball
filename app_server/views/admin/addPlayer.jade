@@ -1,0 +1,16 @@
+extends ../layout
+include ../_includes/sharedHTMLfunctions
+
+block content
+  form(name="addPlayer", method="post")
+    .form-group.row
+      label(for="player-first-name").col-xs-12.col-md-3 Player first name
+      .col-xs-12.col-md-6
+        input(type="text").form-control#player-first-name
+    .form-group.row
+      label(for="player-last-name").col-xs-12.col-md-3 Player last name
+      .col-xs-12.col-md-6
+        input(type="text").form-control#player-last-name
+    .form-group.row
+      .col-xs-12.col-md-2
+        input(type="submit").form-control#submit-new-player

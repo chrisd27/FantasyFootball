@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  form(name="newAccount", method="post")
+    .form-group.row
+      label(for="team-name").col-xs-12.col-md-3 Team name
+      .col-xs-12.col-md-6
+        input(type="text").form-control#team-name
+    .form-group.row
+      label(for="email-address").col-xs-12.col-md-3 Email address
+      .col-xs-12.col-md-6
+        input(type="text").form-control#email-address
+    .form-group.row
+      label(for="password").col-xs-12.col-md-3 Password
+      .col-xs-12.col-md-6
+        input(type="password").form-control#password
+    .form-group.row
+      label(for="confirm-password").col-xs-12.col-md-3 Confirm password
+      .col-xs-12.col-md-6
+        input(type="password").form-control#confirm-password
+    .form-group.row
+      .col-xs-12.col-md-3
+        input(type="submit").form-control#submit-new-account

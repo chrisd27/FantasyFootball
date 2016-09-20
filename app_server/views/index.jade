@@ -1,5 +1,19 @@
 extends layout
+include _includes/sharedHTMLfunctions
 
 block content
-  h1= title
-  p Welcome to #{title}
+  #banner.page-header
+    .row
+      h1= title
+       small &nbsp; A summary of #{teamName}'s fantasy points!
+  .row-fluid
+    .col-xs-12.col-sm-6.inline
+      p Fantasy Points Table
+      +summaryTable2Col(players, 2)
+    .col-xs-12.col-sm-6.inline
+      p Fantasy Goals Table
+      +summaryTable2Col(players, 3)
+    .col-xs-12.col-sm-6.inline
+      p Fantasy Assists Table
+      +summaryTable2Col(players, 4)
+  .row-fluid
