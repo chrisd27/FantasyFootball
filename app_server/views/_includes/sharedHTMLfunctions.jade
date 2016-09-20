@@ -9,26 +9,30 @@ mixin summaryTable4Col(players, headers, index)
         p.inline.col-xs-4 Edit Game
       else if index == 'Rule'
         p.inline.col-xs-4 Edit Rule
-    each detail in players.details
-      .tblContent.row
-        if index == 'Player'
-          p.inline.col-xs-2= detail.name
-          p.inline.col-xs-2= detail.fantasy
-          p.inline.col-xs-2= detail.goals
-          p.inline.col-xs-2= detail.assists
-          a.col-xs-4(href='/edit/#{detail.id}') Edit
-        else if index == 'Game'
-          p.inline.col-xs-2= detail.opposition
-          p.inline.col-xs-2= detail.score
-          p.inline.col-xs-2= detail.date
-          p.inline.col-xs-2= detail.MOTM
-          a.col-xs-4(href='/edit/#{detail.id}') Edit
-        else if index == 'Rule'
-          p.inline.col-xs-2= detail.rule
-          p.inline.col-xs-2= detail.points
-          p.inline.col-xs-2= detail.position
-          p.inline.col-xs-2= detail.custom
-          a.col-xs-4(href='/edit/#{detail.id}') Edit
+    if index == 'Player'
+      each player in players
+        .tblContent.row
+            p.inline.col-xs-2= player.details.name
+            p.inline.col-xs-2= player.points.total
+            p.inline.col-xs-2= player.stats.goals
+            p.inline.col-xs-2= player.stats.assists
+            a.col-xs-4(href='/edit/#{player.id}') Edit
+    else if index == 'Game'
+      each game in games
+        .tblContent.row
+          p.inline.col-xs-2= game.opposition
+          p.inline.col-xs-2= game.score
+          p.inline.col-xs-2= game.date
+          p.inline.col-xs-2= game.MOTM
+          a.col-xs-4(href='/edit/#{game.id}') Edit
+    else if index == 'Rule'
+      each rule in rules
+        .tblContent.row
+          p.inline.col-xs-2= rule.rule
+          p.inline.col-xs-2= rule.points
+          p.inline.col-xs-2= rule.position
+          p.inline.col-xs-2= rule.custom
+          a.col-xs-4(href='/edit/#{rule.id}') Edit
         
 
 
@@ -51,14 +55,14 @@ mixin summaryTable2Col(players, headers, index)
     each header in headers
       p.inline.col-xs-5= header
     .tblContent.row
-    each detail in players.details
-      p.inline.col-xs-5= detail.name
+    each player in players
+      p.inline.col-xs-5= player.details.name
       if index == 'fantasy'
-        p.inline.col-xs-5= detail.fantasy
+        p.inline.col-xs-5= player.points.total
       else if index == 'goals'
-        p.inline.col-xs-5= detail.goals
+        p.inline.col-xs-5= player.stats.goals
       else if index == 'assists'
-        p.inline.col-xs-5= detail.assists
+        p.inline.col-xs-5= player.stats.assists
 
 mixin playerStatsTable(player)
   .statsTable

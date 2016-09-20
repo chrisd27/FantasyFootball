@@ -7,13 +7,12 @@ block content
       h1= title
        small &nbsp; A summary of #{teamName}'s fantasy points!
   .row-fluid
-    .col-xs-12.col-sm-6.inline
+    .col-xs-12.col-sm-6.col-md-4.inline
       p Fantasy Points Table
-      +summaryTable2Col(players, 2)
-    .col-xs-12.col-sm-6.inline
+      +summaryTable2Col(players, ['Player name', 'Fantasy points'], 'fantasy')
+    .col-xs-12.col-sm-6.col-md-4.inline
       p Fantasy Goals Table
-      +summaryTable2Col(players, 3)
-    .col-xs-12.col-sm-6.inline
+      +summaryTable2Col(players, ['Player name', 'Goals'], 'goals')
+    .col-xs-12.col-sm-6.col-md-4.inline
       p Fantasy Assists Table
-      +summaryTable2Col(players, 4)
-  .row-fluid
+      +summaryTable2Col(players, ['Player name', 'Assists'], 'assists')
