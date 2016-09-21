@@ -16,3 +16,7 @@ block content
     .col-xs-12.col-sm-6.col-md-4.inline
       p Fantasy Assists Table
       +summaryTable2Col(players, ['Player name', 'Assists'], 'assists')
+  .row-fluid
+    .col-xs-12
+    p Recent Games
+    +gamesTable(games, players, ['Opposition', 'Score', 'Date', 'Result'])

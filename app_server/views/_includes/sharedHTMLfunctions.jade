@@ -13,9 +13,9 @@ mixin summaryTable4Col(players, headers, index)
       each player in players
         .tblContent.row
             p.inline.col-xs-2= player.details.name
-            p.inline.col-xs-2= player.points.total
-            p.inline.col-xs-2= player.stats.goals
-            p.inline.col-xs-2= player.stats.assists
+            p.inline.col-xs-2= player.totals.fantasyTotal
+            p.inline.col-xs-2= player.totals.goals
+            p.inline.col-xs-2= player.totals.assists
             a.col-xs-4(href='/edit/#{player.id}') Edit
     else if index == 'Game'
       each game in games
@@ -58,11 +58,11 @@ mixin summaryTable2Col(players, headers, index)
     each player in players
       p.inline.col-xs-5= player.details.name
       if index == 'fantasy'
-        p.inline.col-xs-5= player.points.total
+        p.inline.col-xs-5= player.totals.fantasyTotal
       else if index == 'goals'
-        p.inline.col-xs-5= player.stats.goals
+        p.inline.col-xs-5= player.totals.goals
       else if index == 'assists'
-        p.inline.col-xs-5= player.stats.assists
+        p.inline.col-xs-5= player.totals.assists
 
 mixin playerStatsTable(player)
   .statsTable
@@ -79,4 +79,29 @@ mixin playerStatsList(player)
       .statContainer
         p.inline.col-xs-5= stat.name
         p.inline.col-xs-5= stat.val
+
+mixin gamesTable(games, players, headers)
+  .gamesTable
+    .tblHeaders.col-xs-12
+      each header in headers
+        p.inline.col-xs-3= header
+    each game in games
+      .tblContent.col-xs-12
+        a(href="game.id").inline.col-xs-3= game.opposition
+        p.inline.col-xs-3= game.score
+        p.inline.col-xs-3= game.date
+        p.inline.col-xs-3= game.result
+        .tblSubContentName.row.col-xs-12
+          p.inline.col-xs-2 Players
+          each rule in rules
+            p.inline.col-xs-1= rule.rule
+        each player in players
+          each stat in player.stats
+            .tblSubContent.row.col-xs-12
+              if stat.gameId == game.id
+                a(href="player.id").inline.col-xs-2= player.details.name
+                each rule in stat.rules
+                  p.inline.col-xs-1= rule.value
+
+
         
