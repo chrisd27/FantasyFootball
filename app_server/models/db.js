@@ -5,13 +5,41 @@ var ffDataStr = "mongodb://localhost/ffData";
 var ffDataDB = mongoose.createConnection(ffDataStr);
 
 ffDataDB.on('connected', function(){
-	console.log("Successfully connected to the ffDataDB");
+	console.log("Mongoose connected to "+ffDataStr);
 });
 
-ffDataDB.on('error', function(){
-	console.log("An error has occured when attempting to connect to the ffDataDB");
+ffDataDB.on('error', function(e){
+	console.log("Mongoose connection error :"+e);
 });
 
 ffDataDB.on('disconnected', function(){
-	console.log("Successfully disconnected to the ffDataDB");
+	console.log("Mongoose successfully disconnected");
+});
+
+gracefulShutdown = function (msg, callback){
+	mongoose.connection.close(function(){
+		console.log("Mongoose disconnect "+msg);
+		callback();
+	});
+}
+
+// Nodemon restarts
+process.once('SIGUSR2', function(){
+	gracefulShutdown('nodemon restart', function(){
+		process.kill(process.id, 'SIGUSR2');
+	});
+});
+
+// For app termination
+process.once('SIGINT', function(){
+	gracefulShutdown('app termination', function(){
+		process.exit(0);
+	});
+});
+
+// For app termination
+process.once('SIGTERM', function(){
+	gracefulShutdown('Heroku app termination', function(){
+		process.exit(0);
+	});
 });
