@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 
 // Connect to the Fantasy Football Data mongoDB
+mongoose.Promise = global.Promise;
 var ffDataStr = "mongodb://localhost/ffData"; 
 var ffDataDB = mongoose.createConnection(ffDataStr);
 
