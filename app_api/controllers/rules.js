@@ -18,7 +18,7 @@ module.exports.ruleReadOne = function(req, res){
 	if(req.params && req.params.rulesid){
 		Rule.findById(req.params.rulesid)
 		.exec(function(err, rule){
-			if(!rules){
+			if(!rule){
 				sendJsonResponse(res, 404, {
 					"message" : "ruleid not found"
 				});
