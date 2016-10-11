@@ -43,3 +43,8 @@ process.once('SIGTERM', function(){
 		process.exit(0);
 	});
 });
+
+// Require Mongoose Schemas
+require('./players');
+require('./games');
+require('./rules');
