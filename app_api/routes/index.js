@@ -10,23 +10,23 @@ var ctrlRules = require('../controllers/rules');
 router.get('/players', ctrlPlayers.allPlayers);
 router.post('/players', ctrlPlayers.playerCreate);
 router.get('/players/:playerid', ctrlPlayers.playerReadOne);
-router.put('/players:playerid', ctrlPlayers.playerUpdateOne);
-router.delete('/players:playerid', ctrlPlayers.playerDeleteOne);
+router.put('/players/:playerid', ctrlPlayers.playerUpdateOne);
+router.delete('/players/:playerid', ctrlPlayers.playerDeleteOne);
 
 
 /* Games */
 router.get('/games', ctrlGames.allGames);
 router.post('/games', ctrlGames.gameCreate);
 router.get('/games/:gameid', ctrlGames.gameReadOne);
-router.put('/games:gameid', ctrlGames.gameUpdateOne);
-router.delete('/games:gamesid', ctrlGames.gameDeleteOne);
+router.put('/games/:gameid', ctrlGames.gameUpdateOne);
+router.delete('/games/:gameid', ctrlGames.gameDeleteOne);
 
 
 /* Rules */
 router.get('/rules', ctrlRules.allRules);
 router.post('/rules', ctrlRules.ruleCreate);
-router.get('/rules/:rulesid', ctrlRules.ruleReadOne);
-router.put('/rules:rulesid', ctrlRules.ruleUpdateOne);
-router.delete('/rules:rulesid', ctrlRules.ruleDeleteOne);
+router.get('/rules/:ruleid', ctrlRules.ruleReadOne);
+router.put('/rules/:ruleid', ctrlRules.ruleUpdateOne);
+router.delete('/rules/:ruleid', ctrlRules.ruleDeleteOne);
 
 module.exports = router;

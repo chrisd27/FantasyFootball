@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 // Connect to the Fantasy Football Data mongoDB
 mongoose.Promise = global.Promise;
 var ffDataStr = "mongodb://localhost/ffData"; 
+/*
 var ffDataDB = mongoose.createConnection(ffDataStr);
 
 ffDataDB.on('connected', function(){
@@ -14,6 +15,21 @@ ffDataDB.on('error', function(e){
 });
 
 ffDataDB.on('disconnected', function(){
+	console.log("Mongoose successfully disconnected");
+});
+
+*/
+mongoose.connect(ffDataStr);
+
+mongoose.connection.on('connected', function(){
+	console.log("Mongoose connected to "+ffDataStr);
+});
+
+mongoose.connection.on('error', function(e){
+	console.log("Mongoose connection error :"+e);
+});
+
+mongoose.connection.on('disconnected', function(){
 	console.log("Mongoose successfully disconnected");
 });
 
