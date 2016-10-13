@@ -219,7 +219,9 @@ module.exports.addRules = function(req, res){
 
 /* Get 'add player' page */
 module.exports.addPlayer = function(req, res){
-  res.render('admin/addPlayer', { title: 'Add Player' });
+  res.render('admin/addPlayer', { 
+    title: 'Add Player',
+    positions: ['Goalie', 'Defender', 'Midfielder', 'Forward', 'Sub'] });
 };
 
 /* Get 'add game' page */

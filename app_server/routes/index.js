@@ -22,6 +22,10 @@ router.get('/admin/addRules', ctrlAdmin.addRules);
 router.get('/admin/addPlayer', ctrlAdmin.addPlayer);
 router.get('/admin/addGame', ctrlAdmin.addGame);
 
+//router.post('/admin/addRules', ctrlAdmin.addRules);
+//router.post('/admin/addPlayer', ctrlAdmin.addPlayer);
+//router.post('/admin/addGame', ctrlAdmin.addGame);
+
 /* Edit */
 router.get('/admin/editRule', ctrlAdmin.editRule);
 router.get('/admin/editPlayer', ctrlAdmin.editPlayer);

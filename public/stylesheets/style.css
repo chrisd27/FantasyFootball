@@ -1,0 +1,11 @@
+
+.navbar, .navbar-default, .navbar-fixed-top{
+	position: relative;
+}
+
+@media(min-width: 768px){
+	
+	.nav li a, .navbar-nav li a{
+		display: inline-block;
+	}
+}
