@@ -9,14 +9,23 @@ block content
   .row-fluid
     .col-xs-12.col-sm-6.col-md-4.inline
       p Fantasy Points Table
-      +summaryTable2Col(players, ['Player name', 'Fantasy points'], 'fantasy')
+    //-  +summaryTable2Col(players, ['Player name', 'Fantasy points'], 'fantasy')
     .col-xs-12.col-sm-6.col-md-4.inline
       p Fantasy Goals Table
-      +summaryTable2Col(players, ['Player name', 'Goals'], 'goals')
+    //-  +summaryTable2Col(players, ['Player name', 'Goals'], 'goals')
     .col-xs-12.col-sm-6.col-md-4.inline
       p Fantasy Assists Table
-      +summaryTable2Col(players, ['Player name', 'Assists'], 'assists')
+    //-  +summaryTable2Col(players, ['Player name', 'Assists'], 'assists')
   .row-fluid
     .col-xs-12
     p Recent Games
-    +gamesTable(games, players, ['Opposition', 'Score', 'Date', 'Result'])
+    each game in games
+      p= game.opposition
+      p= game.oppositionScore
+      p= game.accountTeamScore
+      p= game.date
+    p Recent Players
+      p= players
+    p Recent Rules
+      p= rules
+   //- +gamesTable(games, players, ['Opposition', 'Score', 'Date', 'Result'])
