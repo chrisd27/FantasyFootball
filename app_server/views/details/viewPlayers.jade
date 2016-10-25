@@ -1,0 +1,26 @@
+extends ../layout
+include ../_includes/sharedHTMLfunctions
+
+block content
+  each player, index in players
+    .row
+      .col-xs-12.col-md-6
+        label(for="name") Name
+        p#name-val= player.details.firstName + " " + player.details.lastName
+    .row
+      .col-xs-12.col-md-6
+        label(for="nickname") Nickname
+        p#nickname-val= player.details.nickname
+    .row
+      .col-xs-12.col-md-6
+        label(for="fantasyPoints") Fantasy Points
+        p#fantasyPoints= player.totals.fantasyTotal
+    .row
+      .col-xs-12.col-md-6
+        label(for="goals") Goals
+        p#goals= player.totals.goals
+    .row
+      .col-xs-12.col-md-6
+        label(for="assists") Goals
+        p#assists= player.totals.assists
+  

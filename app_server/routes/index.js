@@ -4,6 +4,7 @@ var router = express.Router();
 /* Controllers */
 var ctrlMain = require('../controllers/main');
 var ctrlAdmin= require('../controllers/admin');
+var ctrlDetails= require('../controllers/details');
 var ctrlOthers = require('../controllers/others');
 
 /* Main page */
@@ -15,26 +16,26 @@ router.get('/signIn', ctrlOthers.signIn);
 router.get('/about', ctrlOthers.about);
 
 /* Admin */
-router.get('/admin/teamSummary', ctrlAdmin.teamSummary);
+router.get('/teamSummary', ctrlAdmin.teamSummary);
 
 /* Add */
-router.get('/admin/addRules', ctrlAdmin.addRules);
-router.get('/admin/addPlayer', ctrlAdmin.addPlayer);
-router.get('/admin/addGame', ctrlAdmin.addGame);
+router.get('/admin/rules/new', ctrlAdmin.addRule);
+router.get('/admin/players/new', ctrlAdmin.addPlayer);
+router.get('/admin/games/new', ctrlAdmin.addGame);
 
-//router.post('/admin/addRules', ctrlAdmin.addRules);
-//router.post('/admin/addPlayer', ctrlAdmin.addPlayer);
-//router.post('/admin/addGame', ctrlAdmin.addGame);
-
-/* Edit */
-router.get('/admin/editRule', ctrlAdmin.editRule);
-router.get('/admin/editPlayer', ctrlAdmin.editPlayer);
-router.get('/admin/editGame', ctrlAdmin.editGame);
+router.post('/admin/rules/new', ctrlAdmin.doAddRule);
+router.post('/admin/players/new', ctrlAdmin.doAddPlayer);
+//router.post('/admin/game/new', ctrlAdmin.doAddGame);
 
 /* Edit */
-router.get('/admin/viewRules', ctrlAdmin.viewRules);
-router.get('/admin/viewPlayer', ctrlAdmin.viewPlayer);
-router.get('/admin/viewGame', ctrlAdmin.viewGame);
+router.get('/admin/rule/:ruleid', ctrlAdmin.editRule);
+router.get('/admin/player/:playerid', ctrlAdmin.editPlayer);
+router.get('/admin/game/:gameid', ctrlAdmin.editGame);
+
+/* View All */
+router.get('/details/rules', ctrlDetails.viewRules);
+router.get('/details/players', ctrlDetails.viewPlayer);
+router.get('/details/games', ctrlDetails.viewGame);
 
 
 module.exports = router;

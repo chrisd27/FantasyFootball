@@ -24,9 +24,11 @@ module.exports.allRules = function(req, res){
 module.exports.ruleCreate = function(req, res){
 	Rule.create({
 		name: req.body.name, 
-	    points: req.body.points, 
-	    position: req.body.position,
-	    custom: req.body.custom
+	    gkPoints: req.body.gkPoints, 
+	    defPoints: req.body.defPoints, 
+	    midPoints: req.body.midPoints, 
+	    fwdPoints: req.body.fwdPoints, 
+	    subPoints: req.body.subPoints, 
 	}, function(err, rule){
 		if(err){
 			sendJsonResponse(res, 400, err);

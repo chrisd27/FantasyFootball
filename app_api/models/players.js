@@ -1,9 +1,5 @@
 var mongoose = require('mongoose');
 
-var totalsSchema = new mongoose.Schema({
-	
-});
-
 var statsSchema = new mongoose.Schema({
 	gameId: Number,
 	rules:[{
@@ -15,8 +11,10 @@ var statsSchema = new mongoose.Schema({
 
 var playerSchema = new mongoose.Schema({
 	details: {
-        name: {type: String, required: true},
-        preferredPosition: String
+        firstName: {type: String, required: true},
+		lastName: {type: String, required: true},
+		nickname: String,
+        prefPosition: String
     },
     stats: [statsSchema],
     totals: {
@@ -26,7 +24,9 @@ var playerSchema = new mongoose.Schema({
 		assistPoints: {type: Number, "default": 0, min :0},
 		redCards: {type: Number, "default": 0, min :0},
 		yellowCards: {type: Number, "default": 0, min :0},
+		cardPoints: {type: Number, "default": 0, min :0},
 		motm: {type: Number, "default": 0, min :0},
+		motmPoints: {type: Number, "default": 0, min :0},
 		fantasyTotal: {type: Number, "default": 0, min :0}
 	}
 });

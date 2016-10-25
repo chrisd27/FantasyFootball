@@ -1,0 +1,30 @@
+extends ../layout
+include ../_includes/sharedHTMLfunctions
+
+block content
+  each rule, index in rules
+    .row
+      .col-xs-12.col-md-6
+        label(for="name") Name
+        p#name= rule.name
+    .row
+      .col-xs-12.col-md-6
+        label(for="gkPoints") Goalkeeper Points
+        p#gkPoints= rule.gkPoints
+    .row
+      .col-xs-12.col-md-6
+        label(for="defPoints") Defender Points
+        p#defPoints= rule.defPoints
+    .row
+      .col-xs-12.col-md-6
+        label(for="midPoints") Midfielder Points
+        p#midPoints= rule.midPoints
+    .row
+      .col-xs-12.col-md-6
+        label(for="fwdPoints") Foward Points
+        p#fwdPoints= rule.fwdPoints
+    .row
+      .col-xs-12.col-md-6
+        label(for="subPoints") Substitute Points
+        p#subPoints= rule.subPoints
+  

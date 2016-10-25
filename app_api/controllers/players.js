@@ -24,8 +24,10 @@ module.exports.allPlayers = function(req, res){
 module.exports.playerCreate = function(req, res){
 	Player.create({
 		details: {
-	        name: req.body.name,
-	        preferredPosition : req.body.preferredPosition
+	        firstName: req.body.firstName,
+	        lastName: req.body.lastName,
+	        nickname: req.body.nickname,
+	        prefPosition : req.body.prefPosition
 	    }
 	}, function(err, player){
 		if(err){

@@ -2,23 +2,23 @@ extends ../layout
 include ../_includes/sharedHTMLfunctions
 
 block content
-  form(name="addPlayer", method="post")
+  form(name="addPlayer", method="post", action="")
     .form-group.row
-      label(for="player-first-name").col-xs-12.col-md-3 First name
+      label(for="firstName").col-xs-12.col-md-3 First name
       .col-xs-12.col-md-6
-        input(type="text").form-control#player-first-name
+        input(type="text", name="firstName").form-control#firstName
     .form-group.row
-      label(for="player-last-name").col-xs-12.col-md-3 Surname
+      label(for="lastName").col-xs-12.col-md-3 Surname
       .col-xs-12.col-md-6
-        input(type="text").form-control#player-last-name
+        input(type="text", name="lastName").form-control#lastName
     .form-group.row
-      label(for="player-nickname").col-xs-12.col-md-3 Nickname
+      label(for="nickname").col-xs-12.col-md-3 Nickname
       .col-xs-12.col-md-6
-        input(type="text").form-control#player-nickname
+        input(type="text", name="nickname").form-control#nickname
     .form-group.row
-      label(for="player-preferred-pos").col-xs-12.col-md-3 Preferred position
+      label(for="prefPosition").col-xs-12.col-md-3 Preferred position
       .col-xs-12.col-md-6
-        select.form-control#player-preferred-pos
+        select(name="prefPosition").form-control#prefPosition
           each position, i in positions
             option(value=i) #{position}
     .form-group.row

@@ -74,18 +74,25 @@ module.exports.main = function(req, res){
     }
   });
 
-  // Rules request
+  /* Rules request
   path.rules = "/api/rules";
-  requestOptions.getRules = {
+  requestOptions.postRules = {
     url: apiOptions.server + path.rules,
-    method: "GET",
+    method: "POST",
     json: {},
     qs: {
       offset: 20
+    },
+    form: {
+      name: body.formData.name,
+      gkPoints: body.formData.gkPoints,
+      defPoints: body.formData.defPoints,
+      midPoints: body.formData.midPoints,
+      fwdPoints: body.formDatafwdPoints
     }
   }
 
-  request(requestOptions.getRules, function(err, response, body){
+  request(requestOptions.postRules, function(err, response, body){
     respCount++;
     if(err){
         return console.log(err);
@@ -101,6 +108,8 @@ module.exports.main = function(req, res){
     } else {
         console.log(response.statusCode);
     }
-  });
+  }); */
+
+  // Rules Post
 
 };

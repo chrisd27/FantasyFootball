@@ -8,7 +8,7 @@ var ctrlRules = require('../controllers/rules');
 
 /* Players */
 router.get('/players', ctrlPlayers.allPlayers);
-router.post('/players', ctrlPlayers.playerCreate);
+router.post('/players/new', ctrlPlayers.playerCreate);
 router.get('/players/:playerid', ctrlPlayers.playerReadOne);
 router.put('/players/:playerid', ctrlPlayers.playerUpdateOne);
 router.delete('/players/:playerid', ctrlPlayers.playerDeleteOne);
@@ -16,7 +16,7 @@ router.delete('/players/:playerid', ctrlPlayers.playerDeleteOne);
 
 /* Games */
 router.get('/games', ctrlGames.allGames);
-router.post('/games', ctrlGames.gameCreate);
+router.post('/games/new', ctrlGames.gameCreate);
 router.get('/games/:gameid', ctrlGames.gameReadOne);
 router.put('/games/:gameid', ctrlGames.gameUpdateOne);
 router.delete('/games/:gameid', ctrlGames.gameDeleteOne);
@@ -24,7 +24,7 @@ router.delete('/games/:gameid', ctrlGames.gameDeleteOne);
 
 /* Rules */
 router.get('/rules', ctrlRules.allRules);
-router.post('/rules', ctrlRules.ruleCreate);
+router.post('/rules/new', ctrlRules.ruleCreate);
 router.get('/rules/:ruleid', ctrlRules.ruleReadOne);
 router.put('/rules/:ruleid', ctrlRules.ruleUpdateOne);
 router.delete('/rules/:ruleid', ctrlRules.ruleDeleteOne);

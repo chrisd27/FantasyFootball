@@ -2,11 +2,11 @@ extends ../layout
 include ../_includes/sharedHTMLfunctions
 
 block content
-  form(name="addRules", method="post")
+  form(name="addRules", method="post", action="")
     .form-group.row
-      label(for="rule-name").col-xs-12.col-md-3 Rule name
+      label(for="name").col-xs-12.col-md-3 Rule name
       .col-xs-12.col-md-6
-        input(type="text").form-control#rule-name
+        input(type="text", name="name").form-control#name
     .form-group.row
       label(for="position-multiplier").col-xs-12.col-md-3 Position multiplier
       .col-xs-12.col-md-6
@@ -18,21 +18,25 @@ block content
           input(type="number").form-control#single-points
     #multiplier-points
       .form-group.row
-        label(for="goalkeeper-points").col-xs-12.col-md-3 Goalkeeper points
+        label(for="gkpoints").col-xs-12.col-md-3 Goalkeeper points
         .col-xs-12.col-md-2
-          input(type="number").form-control#goalkeeper-points
+          input(type="number", name="gkPoints").form-control#gkpoints
       .form-group.row
-        label(for="defender-points").col-xs-12.col-md-3 Defender points
+        label(for="defPoints").col-xs-12.col-md-3 Defender points
         .col-xs-12.col-md-2
-          input(type="number").form-control#defender-points
+          input(type="number", name="defPoints").form-control#defPoints
       .form-group.row
-        label(for="midfielder-points").col-xs-12.col-md-3 Midfielder points
+        label(for="midPoints").col-xs-12.col-md-3 Midfielder points
         .col-xs-12.col-md-2
-          input(type="number").form-control#midfielder-points
+          input(type="number", name="midPoints").form-control#midPoints
       .form-group.row
-        label(for="striker-points").col-xs-12.col-md-3 Striker points
+        label(for="fwdPoints").col-xs-12.col-md-3 Striker points
         .col-xs-12.col-md-2
-          input(type="number").form-control#striker-points
+          input(type="number", name="fwdPoints").form-control#fwdPoints
+      .form-group.row
+        label(for="subPoints").col-xs-12.col-md-3 Substitute points
+        .col-xs-12.col-md-2
+          input(type="number", name="subPoints").form-control#subPoints
       .form-group.row
         .col-xs-12.col-md-2
           input(type="submit").form-control#submit-new-rule
