@@ -1,0 +1,10 @@
+extends ../layout
+include ../_includes/sharedHTMLfunctions
+
+block content
+  each team, index in teams
+    .row
+      .col-xs-12.col-md-6
+        label(for="name") Team name
+        p#teamName= team.teamName
+    

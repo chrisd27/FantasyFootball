@@ -48,7 +48,7 @@ module.exports.viewPlayer = function(req, res){
 };
 
 
-/* Render playerlist */
+/* Render renderRulesList */
 var renderRulesList = function(req, res, responseBody){
   res.render("details/viewRules", { 
     title: "View rules",
@@ -68,6 +68,30 @@ module.exports.viewRules = function(req, res){
     requestOptions,
     function(err, response, body){
       renderRulesList(req, res, body);
+    }
+  )
+};
+
+/* Render teamList */
+var renderTeamsList = function(req, res, responseBody){
+  res.render("details/viewTeams", { 
+    title: "View teams",
+    teams: responseBody });
+}
+
+/* Get "view team" page */
+module.exports.viewTeams = function(req, res){
+   var requestOptions, path;
+  path = '/api/teams';
+  requestOptions = {
+    url: apiOptions.server + path,
+    method: "GET",
+    json: {}
+  };
+  request(
+    requestOptions,
+    function(err, response, body){
+      renderTeamsList(req, res, body);
     }
   )
 };

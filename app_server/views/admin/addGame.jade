@@ -2,22 +2,35 @@ extends ../layout
 include ../_includes/sharedHTMLfunctions
 
 block content
-  form(name="addGame", method="post")
+  form(name="addGame", method="post", action="")
     .form-group.row
-      label(for="opposition-name").col-xs-12.col-md-3 Opposition name
+      label(for="teamScore").col-xs-12.col-md-3 Team score
       .col-xs-12.col-md-6
-        input(type="text").form-control#opposition-name
+        input(type="number", name="teamScore").form-control#teamScore
+    .form-group.row
+      label(for="oppositionName").col-xs-12.col-md-3 Opposition name
+      .col-xs-12.col-md-6
+        input(type="text", name="oppositionName").form-control#oppositionName
+    .form-group.row
+      label(for="oppositionScore").col-xs-12.col-md-3 Opposition score
+      .col-xs-12.col-md-6
+        input(type="number", name="oppositionScore").form-control#oppositionScore
     .form-group.row
       label(for="date").col-xs-12.col-md-3 Date
       .col-xs-12.col-md-6
-        input(type="text").form-control#date
+        input(type="text", name="date").form-control#date
     .form-group.row
-      label(for="score").col-xs-12.col-md-3 Score
-      .col-xs-12.col-md-6
-        input(type="text").form-control#score
-    .form-group.row
-      label(for="match-report").col-xs-12.col-md-3 Match report
-      .col-xs-12.col-md-6
-        input(type="textarea").form-control#match-report
-    .form-group.row
-      input(type="submit").form-control#submit-match
+      p.col-xs-12.col-md-1#rule Rule Name
+      each rule, t in rules
+        p.col-xs-12.col-md-1(id="rule_#{rule._id}")= rule.name
+      each player, i in players
+        div
+          p.col-xs-12.col-md-1#playerName= player.details.nickname
+          label(for="played") Played? 
+          input(type="checkbox").col-xs-12.col-md-1#played
+          each rule, x in rules
+            p.col-xs-12.col-md-1#ruleName= rule.name
+            input(type="hidden", name="player_"+i+"_id_"+player._id).col-xs-12.col-md-1#ruleName= rule.name
+            input(type="input", name="player_#{i}").col-xs-12.col-md-1#ruleName= rule.name
+            
+      

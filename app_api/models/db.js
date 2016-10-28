@@ -65,3 +65,4 @@ process.once('SIGTERM', function(){
 require('./players');
 require('./games');
 require('./rules');
+require('./team');

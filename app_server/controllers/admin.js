@@ -266,6 +266,45 @@ module.exports.doAddRule = function(req, res){
   }
 };
 
+
+/* Get "add teams" page */
+module.exports.addTeam = function(req, res){
+  res.render("admin/addTeam", { title: "Add Teams" });
+};
+
+/* POST "add teams" page */
+module.exports.doAddTeam = function(req, res){
+  var requestOptions, path, postdata;
+  path = "/api/teams/new";
+  postdata = {
+    teamName: req.body.teamName
+  };
+  requestOptions = {
+    url : apiOptions.server + path,
+    method : "POST",
+    json : postdata
+  };
+  if (!postdata.teamName) {
+    res.redirect('/teams/new?err=val');
+  } else {
+    request(
+      requestOptions,
+      function(err, response, body) {
+        if (response.statusCode === 201) {
+          res.redirect('/details/teams');
+        } else if (response.statusCode === 400 && body.teamName && body.teamName === "ValidationError" ) {
+          res.redirect('/teams/new?err=val');
+        } else {
+          console.log(body);
+         // _showError(req, res, response.statusCode);
+        }
+      }
+    );
+  }
+};
+
+
+
 /* Get "add player" page */
 module.exports.addPlayer = function(req, res){
   res.render("admin/addPlayer", { 
@@ -310,9 +349,53 @@ module.exports.doAddPlayer = function(req, res){
   }
 };
 
+var renderAddGamePage = function(req, res, responses){
+
+  var rules, players, length;
+  if(responses){
+    length = responses.length;
+    for(var i = 0; i < length; i++){
+      if(responses[i].body[0]){
+        if(responses[i].body[0].name){
+          rules = responses[i].body;
+          continue;
+        }else if(responses[i].body[0].details.firstName){
+          players = responses[i].body;
+          continue;
+        }
+      }
+    }
+  }
+  res.render("admin/addGame", { 
+    title: "Add Game",
+    players: players,
+    rules : rules
+   });
+}
+
 /* Get "add game" page */
 module.exports.addGame = function(req, res){
-  res.render("admin/addGame", { title: "Add Game" });
+   var requestOptions, path, responses = [], responseCount = 0,
+   pathArr = ['/api/rules', '/api/players'];
+   length = pathArr.length;
+   for(var i = 0; i < length; i++){
+      requestOptions = {
+        url: apiOptions.server + pathArr[i],
+        method: "GET",
+        json: {}
+      };
+      request(
+        requestOptions,
+        function(err, resp, body){
+          responses.push(resp);
+          responseCount++;
+          if(responseCount === length){
+              renderAddGamePage(req, res, responses);
+          }
+        }
+      )
+   }
+  
 };
 
 /* Get "edit game" page */
@@ -335,7 +418,45 @@ module.exports.editPlayer = function(req, res){
   res.render("admin/editPlayer", { title: "Edit player" });
 };
 
+/* Get "edit team" page */
+module.exports.editTeam = function(req, res){
+  res.render("admin/editTeam", { title: "Edit team" });
+};
+
 /* Get "edit rule" page */
 module.exports.editRule = function(req, res){
   res.render("admin/editRule", { title: "Edit rule" });
 };
+
+var renderHomepage = function(req, res, body){
+  res.render("teamSummary", { 
+    title: "Team Summary",
+    players : "",
+    rules: body.rules
+   });
+}
+
+/* Set up new user */
+module.exports.homePage = function(req, res, body){
+  var requestOptions, path, responses = [], responseCount = 0,
+   pathArr = ['/api/rules', '/api/players'];
+   length = pathArr.length;
+   for(var i = 0; i < length; i++){
+      requestOptions = {
+        url: apiOptions.server + pathArr[i],
+        method: "GET",
+        json: {}
+      };
+      request(
+        requestOptions,
+        function(err, resp, body){
+          responses.push(resp);
+          responseCount++;
+          if(responseCount === length){
+              renderHomepage(req, res, responses);
+          }
+        }
+      )
+   }
+}
+

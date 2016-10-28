@@ -59,7 +59,7 @@ module.exports.gameReadOne = function(req, res){
 
 module.exports.gameUpdateOne = function(req, res){
 	if(!req.params.gameid){
-		sendJsonResponse(res, 404, {"message": "Not found, locationid is required"});
+		sendJsonResponse(res, 404, {"message": "Not found, gamesid is required"});
 		return;
 	}
 	Game.findById(req.params.gameid)

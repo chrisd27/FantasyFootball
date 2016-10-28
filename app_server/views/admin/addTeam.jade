@@ -1,0 +1,10 @@
+extends ../layout
+include ../_includes/sharedHTMLfunctions
+
+block content
+  form(name="addTeam", method="post", action="")
+    .form-group.row
+      label(for="teamName").col-xs-12.col-md-3 Team name
+      .col-xs-12.col-md-6
+        input(type="string", name="teamName").form-control#teamName
+        input(type="submit").form-control#submit-new-team

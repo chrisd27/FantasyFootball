@@ -22,20 +22,24 @@ router.get('/teamSummary', ctrlAdmin.teamSummary);
 router.get('/admin/rules/new', ctrlAdmin.addRule);
 router.get('/admin/players/new', ctrlAdmin.addPlayer);
 router.get('/admin/games/new', ctrlAdmin.addGame);
+router.get('/admin/teams/new', ctrlAdmin.addTeam);
 
 router.post('/admin/rules/new', ctrlAdmin.doAddRule);
 router.post('/admin/players/new', ctrlAdmin.doAddPlayer);
+router.post('/admin/teams/new', ctrlAdmin.doAddTeam);
 //router.post('/admin/game/new', ctrlAdmin.doAddGame);
 
 /* Edit */
 router.get('/admin/rule/:ruleid', ctrlAdmin.editRule);
 router.get('/admin/player/:playerid', ctrlAdmin.editPlayer);
 router.get('/admin/game/:gameid', ctrlAdmin.editGame);
+router.get('/admin/team/:teamid', ctrlAdmin.editTeam);
 
 /* View All */
 router.get('/details/rules', ctrlDetails.viewRules);
 router.get('/details/players', ctrlDetails.viewPlayer);
 router.get('/details/games', ctrlDetails.viewGame);
+router.get('/details/teams', ctrlDetails.viewTeams);
 
 
 module.exports = router;
